@@ -1,0 +1,10 @@
+.button {
+    margin:.5em;
+    background:rgba(0,0,0,0.2);
+    border-radius: .5em;
+    padding: .6em;
+    border:0;
+    font-size: large;
+    cursor:pointer;
+  }
+  

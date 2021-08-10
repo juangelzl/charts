@@ -1,0 +1,16 @@
+.lista{
+    text-align: left;
+    cursor: default;
+}
+
+.col{
+    display: inline-block;
+    margin: auto 1em;
+    width: max-content;
+    min-width: 12em;
+}
+.col-sm{
+    width: 4em;
+    min-width: 4em;
+    margin: auto 1em;
+}
