@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import Charts from './Components/Charts';
+
+
+const LastFM = require("last-fm");
+const lastfm = new LastFM("661acb8400b8535db0a0c1a5ca18eff3", {
+  userAgent: "http://localhost:3000",
+});
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Charts lastfm={lastfm}/>
     </div>
   );
 }
