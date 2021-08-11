@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import List from "./List";
 import InputForm from "./UI/InputForm";
 import Card from './UI/Card'
+import lastfmContext from "../store/lastfm-context";
 
-const AlbumsList = (props) => {
+const AlbumsList = () => {
+
+  const ctx = useContext(lastfmContext);
   const [list, setList] = useState([]);
-
   const [q, setQ] = useState("god");
 
   useEffect(
     () =>
-      props.lastfm.albumSearch({ q: q }, (err, data) => {
+    ctx.lastfm.albumSearch({ q: q }, (err, data) => {
         if (err) {
           console.error(err);
         } else {
-          console.log(data);
           setList(data.result);
         }
       }),
-    [q, props.lastfm]
+    [q, ctx.lastfm]
   );
 
   const buscarHandler = (e) => {

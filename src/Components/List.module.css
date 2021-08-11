@@ -9,8 +9,18 @@
     width: max-content;
     min-width: 12em;
 }
+
 .col-sm{
     width: 4em;
-    min-width: 4em;
+    min-width: min-content;
     margin: auto 1em;
+}
+.col-img{
+    min-width: 11em;
+    width: min-content;
+    margin: auto 1em;
+}
+
+.element:nth-child(odd){
+    background: rgba(0,0,0,0.05);
 }

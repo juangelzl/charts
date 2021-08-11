@@ -1,29 +1,27 @@
-import React,{ useState } from "react";
-import Header from "./Components/Header/Header";
-import SearchList from "./Components/SearchList";
+import React,{ useContext} from "react";
 import classes from './App.module.css';
-import AlbumsList from "./Components/AlbumsList";
+import Albums from "./Components/Albums";
+import Songs from "./Components/Songs";
+import Button from './Components/UI/Button';
+import LastfmContext from "./store/lastfm-context";
 
-const LastFM = require("last-fm");
-const lastfm = new LastFM("661acb8400b8535db0a0c1a5ca18eff3", {
-  userAgent: "http://localhost:3000",
-});
+
 function App() {
-  const [section, setSection] = useState("song");
 
-  const onChangeSection = (section) => {
-    setSection(section);
-  };
+  const ctx = useContext(LastfmContext);
 
   return (
     <React.Fragment>
-      <Header onChangeSection={onChangeSection}></Header>
+    <header>
+        <Button className={classes.tab} onClick={ctx.onSelectSongs}>Songs</Button>
+        <Button className={classes.tab} onClick={ctx.onSelectAlbums}>Albums</Button>
+    </header>
       <div className={classes.content}>
-        {section==='song'&&
-          <SearchList lastfm={lastfm} />
+        {ctx.section==='songs'&&
+          <Songs lastfm={ctx.lastfm} />
         }
-        {section==='album'&&
-          <AlbumsList lastfm={lastfm} />
+        {ctx.section==='albums'&&
+          <Albums />
         }
       </div>
     </React.Fragment>

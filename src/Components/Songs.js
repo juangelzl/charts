@@ -3,7 +3,7 @@ import List from "./List";
 import InputForm from "./UI/InputForm";
 import Card from './UI/Card'
 
-const SearchList = (props) => {
+const Songs = (props) => {
   const [list, setList] = useState([]);
 
   const [q, setQ] = useState("god");
@@ -14,7 +14,6 @@ const SearchList = (props) => {
         if (err) {
           console.error(err);
         } else {
-          console.log(data);
           setList(data.result);
         }
       }),
@@ -41,5 +40,5 @@ const SearchList = (props) => {
   );
 };
 
-export default SearchList
+export default Songs
 ;

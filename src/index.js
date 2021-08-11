@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {LastfmContextProvider} from './store/lastfm-context'
 
 ReactDOM.render(
-    <App />,
+  <LastfmContextProvider>
+  <App />
+  </LastfmContextProvider>,
   document.getElementById('root')
 );
 
