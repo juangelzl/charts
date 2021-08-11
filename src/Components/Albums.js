@@ -30,6 +30,7 @@ const AlbumsList = () => {
     if (valor.trim().length > 0) {
       setQ(valor);
     }
+    setShowList(true);
   };
 
   const toggleShowList = (albumId)=>{
