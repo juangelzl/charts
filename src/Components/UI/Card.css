@@ -2,10 +2,14 @@
     margin-top: 2em;
     padding: 1em;
     background: rgba(0, 0, 0, 0.15);
-    border-radius: 2em;
+    border-radius: .6em;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
   }
   
+  .card.white{
+    
+    background: rgba(255, 255, 255, 0.30);
+  }
 
   h2 {
     font-style: italic;

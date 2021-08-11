@@ -1,6 +1,13 @@
 .lista{
+    margin-top:.5em;
+    margin-bottom:.5em;
+    /* padding: .3em; */
     text-align: left;
     cursor: default;
+}
+
+.row{
+    padding:0 1em;
 }
 
 .col{
@@ -8,6 +15,8 @@
     margin: auto 1em;
     width: max-content;
     min-width: 12em;
+    /* margin-bottom: 1em; */
+    vertical-align: middle;
 }
 
 .col-sm{
@@ -15,12 +24,20 @@
     min-width: min-content;
     margin: auto 1em;
 }
+
 .col-img{
     min-width: 11em;
     width: min-content;
     margin: auto 1em;
 }
 
+.element{
+    border-radius: .3em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
 .element:nth-child(odd){
     background: rgba(0,0,0,0.05);
 }
+

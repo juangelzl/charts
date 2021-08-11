@@ -1,0 +1,22 @@
+
+.title{
+    font-style: normal;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.artist{
+    font-style: italic;
+    font-weight: bold;
+}
+
+.summary{
+    padding: auto;
+    text-align: justify;
+    font-size: small;
+}
+
+img{
+    border-radius: .4em;
+    box-shadow: .1em .1em .5em rgba(0,0,0,.3) ;
+}
