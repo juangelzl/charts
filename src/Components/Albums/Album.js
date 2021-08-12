@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import LastfmContext from "../store/lastfm-context";
-import Card from "./UI/Card";
-import Item from "./UI/Item";
-import ShortList from "./ShortList";
+import LastfmContext from "../../store/lastfm-context";
+import Card from "../UI/Card";
+import Item from "../UI/Item";
+import ShortList from "../ShortList";
 import classes from "./Album.module.css";
-import Button from "./UI/Button";
+import Button from "../UI/Button";
 
 const Album = (props) => {
   const ctx = useContext(LastfmContext);

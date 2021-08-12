@@ -6,16 +6,18 @@ const lastfm = new LastFM("661acb8400b8535db0a0c1a5ca18eff3", {
 });
 
 const LastfmContext = React.createContext({
-  section: 'albums',
+  section: "albums",
   onSelectSongs: () => {},
   onSelectAlbums: () => {},
-  lastfm:lastfm,
+  onSearch:()=>{},
+  lastfm: lastfm,
+  searchQ: "kendrick",
 });
 
-
 export const LastfmContextProvider = (props) => {
-// const section='albums';
-  const [section, setSection] = useState('albums');
+  // const section='albums';
+  const [searchQ, setSearchQ] = useState("god");
+  const [section, setSection] = useState("albums");
 
   const selectSongsHandler = () => {
     localStorage.setItem("section", "songs");
@@ -26,13 +28,19 @@ export const LastfmContextProvider = (props) => {
     setSection("albums");
   };
 
+  const searchHandler=(q)=>{
+    setSearchQ(q)
+  }
+
   return (
     <LastfmContext.Provider
       value={{
         section: section,
         onSelectSongs: selectSongsHandler,
         onSelectAlbums: selectAlbumsHandler,
+        onSearch:searchHandler,
         lastfm: lastfm,
+        searchQ: searchQ,
       }}
     >
       {props.children}

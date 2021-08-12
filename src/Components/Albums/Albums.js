@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import List from "./List";
-import Grid from "./Grid";
-import InputForm from "./UI/InputForm";
-import Card from "./UI/Card";
+import List from "../List";
+import Grid from "../Grid";
+import Card from "../UI/Card";
 import Album from "./Album";
-import LastfmContext from "../store/lastfm-context";
-import Options from "./UI/Options";
-import classes from './Albums.module.css';
+import LastfmContext from "../../store/lastfm-context";
+import Options from "../UI/Options";
+import classes from "./Albums.module.css";
 
 const AlbumsList = () => {
   const ctx = useContext(LastfmContext);
@@ -44,7 +43,6 @@ const AlbumsList = () => {
     setShowList(true);
   };
 
-
   const toggleShowList = (albumId) => {
     setAlbum({
       name: list[albumId].name,
@@ -58,15 +56,14 @@ const AlbumsList = () => {
   };
 
   return (
-    <Card>
-      <InputForm onSubmit={buscarHandler}></InputForm>
+    <React.Fragment>
       {showList && (
         <Card>
           <div className={classes.header}>
             <h2 className={classes.title}>Albums</h2>
             <Options
               className={classes.options}
-              active={!showGrid && 'active' }
+              active={!showGrid && "active"}
               onClick={toggleShowGrid}
             ></Options>
           </div>
@@ -75,7 +72,7 @@ const AlbumsList = () => {
         </Card>
       )}
       {!showList && <Album album={album} onReturn={showListHandler} />}
-    </Card>
+    </React.Fragment>
   );
 };
 
