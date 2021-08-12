@@ -41,3 +41,9 @@
     background: rgba(0,0,0,0.05);
 }
 
+
+.image {
+    vertical-align: bottom;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em 0.5em rgba(0, 0, 0, 0.3);
+  }

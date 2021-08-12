@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  vertical-align: bottom;
+}
+
+.title {
+  align-self: center;
+  margin: 0;
+}
+
+.options {
+  vertical-align: middle;
+  position: absolute;
+  align-self: flex-end;
+
+}

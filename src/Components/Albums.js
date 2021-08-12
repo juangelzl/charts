@@ -1,16 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import List from "./List";
+import Grid from "./Grid";
 import InputForm from "./UI/InputForm";
 import Card from "./UI/Card";
 import Album from "./Album";
 import LastfmContext from "../store/lastfm-context";
+import Options from "./UI/Options";
+import classes from './Albums.module.css';
 
 const AlbumsList = () => {
   const ctx = useContext(LastfmContext);
   const [list, setList] = useState([]);
   const [showList, setShowList] = useState(true);
+  const [showGrid, setShowGrid] = useState(false);
   const [q, setQ] = useState("god");
-  const [album, setAlbum] = useState({name:"Thriller",artistName:"Michael Jackson"});
+  const [album, setAlbum] = useState({
+    name: "Thriller",
+    artistName: "Michael Jackson",
+  });
 
   useEffect(
     () =>
@@ -33,21 +40,41 @@ const AlbumsList = () => {
     setShowList(true);
   };
 
-  const toggleShowList = (albumId)=>{
-    setAlbum({name:list[albumId].name,artistName:list[albumId].artistName})
-    setShowList(prevState=>!prevState);
-  }
+  const showListHandler = () => {
+    setShowList(true);
+  };
+
+
+  const toggleShowList = (albumId) => {
+    setAlbum({
+      name: list[albumId].name,
+      artistName: list[albumId].artistName,
+    });
+    setShowList((prevState) => !prevState);
+  };
+
+  const toggleShowGrid = () => {
+    setShowGrid((prevState) => !prevState);
+  };
 
   return (
     <Card>
       <InputForm onSubmit={buscarHandler}></InputForm>
       {showList && (
         <Card>
-          <h2>Album</h2>
-          <List onShowAlbum={toggleShowList} lista={list}></List>
+          <div className={classes.header}>
+            <h2 className={classes.title}>Albums</h2>
+            <Options
+              className={classes.options}
+              active={!showGrid && 'active' }
+              onClick={toggleShowGrid}
+            ></Options>
+          </div>
+          {showGrid && <Grid onShowAlbum={toggleShowList} items={list}></Grid>}
+          {!showGrid && <List onShowAlbum={toggleShowList} lista={list}></List>}
         </Card>
       )}
-      {!showList && <Album  album={album}/>}
+      {!showList && <Album album={album} onReturn={showListHandler} />}
     </Card>
   );
 };

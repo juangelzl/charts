@@ -1,0 +1,20 @@
+.image {
+  vertical-align: bottom;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em 0.5em rgba(0, 0, 0, 0.3);
+}
+
+.col-img {
+  display: inline-block;
+  margin: auto 1em;
+  width: max-content;
+  vertical-align: middle;
+  min-width: 11em;
+  width: min-content;
+  /* margin: auto 1em; */
+}
+
+.col{
+    text-align: center;
+    margin: 0.5em;
+}
