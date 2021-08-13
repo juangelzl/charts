@@ -29,6 +29,7 @@ export const LastfmContextProvider = (props) => {
   };
 
   const searchHandler=(q)=>{
+    console.log(q)
     setSearchQ(q)
   }
 

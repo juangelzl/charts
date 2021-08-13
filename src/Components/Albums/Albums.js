@@ -1,18 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import List from "../List";
 import Grid from "../Grid";
 import Card from "../UI/Card";
 import Album from "./Album";
-import LastfmContext from "../../store/lastfm-context";
 import Options from "../UI/Options";
 import classes from "./Albums.module.css";
 
-const AlbumsList = () => {
-  const ctx = useContext(LastfmContext);
+const AlbumsList = (props) => {
   const [list, setList] = useState([]);
   const [showList, setShowList] = useState(true);
   const [showGrid, setShowGrid] = useState(false);
-  const [q, setQ] = useState("god");
   const [album, setAlbum] = useState({
     name: "Thriller",
     artistName: "Michael Jackson",
@@ -20,24 +17,16 @@ const AlbumsList = () => {
 
   useEffect(
     () =>
-      ctx.lastfm.albumSearch({ q: q }, (err, data) => {
+    props.lastfm.albumSearch({ q: props.searchQ }, (err, data) => {
         if (err) {
           console.error(err);
         } else {
           setList(data.result);
         }
       }),
-    [q, ctx.lastfm]
+    [ props.searchQ, props.lastfm]
   );
 
-  const buscarHandler = (e) => {
-    e.preventDefault();
-    const valor = e.target.elements[0].value;
-    if (valor.trim().length > 0) {
-      setQ(valor);
-    }
-    setShowList(true);
-  };
 
   const showListHandler = () => {
     setShowList(true);

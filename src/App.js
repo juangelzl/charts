@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import classes from "./App.module.css";
 import Albums from "./Components/Albums/Albums";
 import Songs from "./Components/Songs";
 import Button from "./Components/UI/Button";
 import LastfmContext from "./store/lastfm-context";
 import SearchBar from "./Components/SearchBar/SearchBar";
-import Card from './Components/UI/Card'
+import Card from "./Components/UI/Card";
 
 function App() {
   const ctx = useContext(LastfmContext);
@@ -22,9 +22,9 @@ function App() {
       </header>
       <div className={classes.content}>
         <Card>
-          <SearchBar/>
+          <SearchBar onSearch={ctx.onSearch} />
           {ctx.section === "songs" && <Songs lastfm={ctx.lastfm} />}
-          {ctx.section === "albums" && <Albums />}
+          {ctx.section === "albums" && <Albums lastfm={ctx.lastfm}  searchQ={ctx.searchQ}/>}
         </Card>
       </div>
     </React.Fragment>
