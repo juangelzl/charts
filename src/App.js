@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import classes from "./App.module.css";
 import Albums from "./Components/Albums/Albums";
-import Songs from "./Components/Songs";
+import Songs from "./Components/Songs/Songs";
+import Artist from "./Components/Artist/Artist";
 import Button from "./Components/UI/Button";
 import LastfmContext from "./store/lastfm-context";
 import SearchBar from "./Components/SearchBar/SearchBar";
@@ -23,8 +24,9 @@ function App() {
       <div className={classes.content}>
         <Card>
           <SearchBar onSearch={ctx.onSearch} />
-          {ctx.section === "songs" && <Songs lastfm={ctx.lastfm} />}
+          {ctx.section === "songs" && <Songs lastfm={ctx.lastfm} searchQ={ctx.searchQ} />}
           {ctx.section === "albums" && <Albums lastfm={ctx.lastfm}  searchQ={ctx.searchQ}/>}
+          {ctx.section === "artist" && <Artist lastfm={ctx.lastfm}  searchQ={ctx.searchQ}/>}
         </Card>
       </div>
     </React.Fragment>

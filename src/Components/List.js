@@ -6,6 +6,10 @@ const List = (props) => {
     const id = e.target.id;
     props.onShowAlbum(id);
   };
+  const showArtistHandler = (e) => {
+    const id = e.target.id;
+    props.onShowArtist(id);
+  };
   let image = "";
 
   return (
@@ -28,7 +32,9 @@ const List = (props) => {
               {item.listeners}
             </div>
           )}
-          <div className={classes.col}>{item.artistName}</div>
+          <div
+            id={index} className={classes.col}
+            onClick={showArtistHandler}>{item.artistName}</div>
           {/* <input value={index} onClick={showAlbumInfoHandler}> */}
           <div
             id={index}

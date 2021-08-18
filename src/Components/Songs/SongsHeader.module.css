@@ -1,0 +1,21 @@
+.songHeader{
+    display:flex;
+}
+
+.songHeader .col{
+    font-weight: bold;
+    text-align: left;
+}
+
+.col{
+    display: inline-block;
+    width: max-content;
+    min-width: 12em;
+    margin: 0 0;
+    vertical-align: middle;
+}
+
+.col-sm{
+    width: 4em;
+    min-width: 6em;
+}

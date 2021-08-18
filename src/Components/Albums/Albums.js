@@ -10,6 +10,7 @@ const AlbumsList = (props) => {
   const [list, setList] = useState([]);
   const [showList, setShowList] = useState(true);
   const [showGrid, setShowGrid] = useState(false);
+  const [showArtist, setShowArtist] = useState(false);
   const [album, setAlbum] = useState({
     name: "Thriller",
     artistName: "Michael Jackson",
@@ -38,10 +39,19 @@ const AlbumsList = (props) => {
       artistName: list[albumId].artistName,
     });
     setShowList((prevState) => !prevState);
+    setShowArtist(false);
+  };
+
+  const showArtistHandler = (albumId) => {
+    setAlbum({
+      artistName: list[albumId].artistName,
+    });
+    setShowArtist(true);
   };
 
   const toggleShowGrid = () => {
     setShowGrid((prevState) => !prevState);
+    setShowArtist(false);
   };
 
   return (
@@ -57,7 +67,7 @@ const AlbumsList = (props) => {
             ></Options>
           </div>
           {showGrid && <Grid onShowAlbum={toggleShowList} items={list}></Grid>}
-          {!showGrid && <List onShowAlbum={toggleShowList} lista={list}></List>}
+          {!showGrid && <List onShowAlbum={toggleShowList} onShowArtist={showArtistHandler} lista={list}></List>}
         </Card>
       )}
       {!showList && <Album album={album} onReturn={showListHandler} />}

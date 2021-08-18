@@ -23,9 +23,15 @@ export const LastfmContextProvider = (props) => {
     localStorage.setItem("section", "songs");
     setSection("songs");
   };
+  
   const selectAlbumsHandler = () => {
     localStorage.setItem("section", "albums");
     setSection("albums");
+  };
+
+  const selectArtistHandler = () => {
+    localStorage.setItem("section", "artist");
+    setSection("artist");
   };
 
   const searchHandler=(q)=>{
@@ -39,6 +45,7 @@ export const LastfmContextProvider = (props) => {
         section: section,
         onSelectSongs: selectSongsHandler,
         onSelectAlbums: selectAlbumsHandler,
+        onSelectArtist: selectArtistHandler,
         onSearch:searchHandler,
         lastfm: lastfm,
         searchQ: searchQ,

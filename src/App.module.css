@@ -1,6 +1,7 @@
 .content{
-    margin: 2em;
+    margin: auto;
     margin-top: 6em;
+    max-width: 1200px;
 }
 body{
     /* background: rgba(100,0,0,0.8); */

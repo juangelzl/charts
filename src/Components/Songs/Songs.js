@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import List from "./List";
-import Card from "./UI/Card";
+import List from "../List";
+import Card from "../UI/Card";
+import SongsHeader from "./SongsHeader";
 
 const Songs = (props) => {
   const [list, setList] = useState([]);
@@ -21,6 +22,7 @@ const Songs = (props) => {
   return (
     <Card>
       <h2>Songs</h2>
+      <SongsHeader/>
       <List lista={list}></List>
     </Card>
   );
