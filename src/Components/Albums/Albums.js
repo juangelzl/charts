@@ -1,10 +1,11 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import List from "../List";
 import Grid from "../Grid";
 import Card from "../UI/Card";
 import Album from "./Album";
 import Options from "../UI/Options";
 import classes from "./Albums.module.css";
+import Artist from '../Artist/Artist'
 
 const AlbumsList = (props) => {
   const [list, setList] = useState([]);
@@ -15,17 +16,18 @@ const AlbumsList = (props) => {
     name: "Thriller",
     artistName: "Michael Jackson",
   });
+  const [artist, setArtist] = useState("Michael Jackson");
 
   useEffect(
     () =>
-    props.lastfm.albumSearch({ q: props.searchQ }, (err, data) => {
+      props.lastfm.albumSearch({ q: props.searchQ }, (err, data) => {
         if (err) {
           console.error(err);
         } else {
           setList(data.result);
         }
       }),
-    [ props.searchQ, props.lastfm]
+    [props.searchQ, props.lastfm]
   );
 
 
@@ -43,10 +45,9 @@ const AlbumsList = (props) => {
   };
 
   const showArtistHandler = (albumId) => {
-    setAlbum({
-      artistName: list[albumId].artistName,
-    });
+    setArtist(list[albumId].artistName);
     setShowArtist(true);
+    console.log(list[albumId].artistName)
   };
 
   const toggleShowGrid = () => {
@@ -67,10 +68,17 @@ const AlbumsList = (props) => {
             ></Options>
           </div>
           {showGrid && <Grid onShowAlbum={toggleShowList} items={list}></Grid>}
-          {!showGrid && <List onShowAlbum={toggleShowList} onShowArtist={showArtistHandler} lista={list}></List>}
+          {!showGrid && (
+            <List
+              onShowAlbum={toggleShowList}
+              onShowArtist={showArtistHandler}
+              lista={list}
+            ></List>
+          )}
         </Card>
       )}
       {!showList && <Album album={album} onReturn={showListHandler} />}
+      {showArtist && <Artist artist={artist} onReturn={showListHandler} />}
     </React.Fragment>
   );
 };
