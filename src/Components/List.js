@@ -39,7 +39,7 @@ const List = (props) => {
           <div
             id={index}
             className={classes.col}
-            onClick={showAlbumInfoHandler}
+            onClick={item.type !== "track"?showAlbumInfoHandler:''}
           >
             {item.name}
           </div>

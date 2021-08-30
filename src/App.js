@@ -10,7 +10,6 @@ import Card from "./Components/UI/Card";
 
 function App() {
   const ctx = useContext(LastfmContext);
-
   return (
     <React.Fragment>
       <header>
