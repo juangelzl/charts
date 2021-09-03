@@ -1,0 +1,40 @@
+.header {
+    padding: 0;
+    margin-bottom: 1em;
+    vertical-align: bottom;
+  
+  }
+  
+  .image {
+    vertical-align: bottom;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em 0.5em rgba(0, 0, 0, 0.3);
+  }
+  
+  .titles {
+    display: inline-block;
+    margin-left: 1.5em;
+    box-sizing: content-box;
+    padding-bottom: .4em;
+  }
+  
+  .title {
+    margin-bottom: 0.5em;
+    font-style: normal;
+    font-size: larger;
+    font-weight: bold;
+  }
+  
+  .artist {
+    font-style: italic;
+    font-weight: bold;
+  }
+  
+  .summary {
+    padding: auto;
+    text-align: justify;
+    font-size: small;
+  }
+  
+  img {
+  }

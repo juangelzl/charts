@@ -5,19 +5,15 @@ import Card from "../UI/Card";
 import Album from "./Album";
 import Options from "../UI/Options";
 import classes from "./Albums.module.css";
-import Artist from '../Artist/Artist'
 
 const AlbumsList = (props) => {
   const [list, setList] = useState([]);
   const [showList, setShowList] = useState(true);
   const [showGrid, setShowGrid] = useState(false);
-  const [showArtist, setShowArtist] = useState(false);
   const [album, setAlbum] = useState({
     name: "Thriller",
     artistName: "Michael Jackson",
   });
-  const [artist, setArtist] = useState("Michael Jackson");
-
   useEffect(
     () =>
       props.lastfm.albumSearch({ q: props.searchQ }, (err, data) => {
@@ -41,18 +37,16 @@ const AlbumsList = (props) => {
       artistName: list[albumId].artistName,
     });
     setShowList((prevState) => !prevState);
-    setShowArtist(false);
   };
 
   const showArtistHandler = (albumId) => {
-    setArtist(list[albumId].artistName);
-    setShowArtist(true);
-    console.log(list[albumId].artistName)
+    const artistName=list[albumId].artistName;
+    props.selectArtist(artistName)
+    console.log(artistName)
   };
 
   const toggleShowGrid = () => {
     setShowGrid((prevState) => !prevState);
-    setShowArtist(false);
   };
 
   return (
@@ -78,7 +72,6 @@ const AlbumsList = (props) => {
         </Card>
       )}
       {!showList && <Album album={album} onReturn={showListHandler} />}
-      {showArtist && <Artist artist={artist} onReturn={showListHandler} />}
     </React.Fragment>
   );
 };

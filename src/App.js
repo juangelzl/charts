@@ -3,6 +3,7 @@ import classes from "./App.module.css";
 import Albums from "./Components/Albums/Albums";
 import Songs from "./Components/Songs/Songs";
 import Artist from "./Components/Artist/Artist";
+import Today from "./Components/Today/Today";
 import Button from "./Components/UI/Button";
 import LastfmContext from "./store/lastfm-context";
 import SearchBar from "./Components/SearchBar/SearchBar";
@@ -24,8 +25,9 @@ function App() {
         <Card>
           <SearchBar onSearch={ctx.onSearch} />
           {ctx.section === "songs" && <Songs lastfm={ctx.lastfm} searchQ={ctx.searchQ} />}
-          {ctx.section === "albums" && <Albums lastfm={ctx.lastfm}  searchQ={ctx.searchQ}/>}
-          {ctx.section === "artist" && <Artist lastfm={ctx.lastfm}  searchQ={ctx.searchQ}/>}
+          {ctx.section === "albums" && <Albums lastfm={ctx.lastfm} selectArtist={ctx.onSelectArtist} searchQ={ctx.searchQ}/>}
+          {ctx.section === "artist" && <Artist lastfm={ctx.lastfm} searchQ={ctx.searchQ}/>}
+          {ctx.section === "today" && <Today lastfm={ctx.lastfm}  searchQ={ctx.searchQ}/>}
         </Card>
       </div>
     </React.Fragment>

@@ -5,6 +5,7 @@ const Header = (props)=>{
         <header>
             <Button className={classes.tab} onClick={props.onChangeSection('song')}>Search List</Button>
             <Button className={classes.tab} onClick={props.onChangeSection('album')}>Search User</Button>
+            <Button className={classes.tab} onClick={props.onChangeSection('Today')}>Today</Button>
         </header>
     )
 };

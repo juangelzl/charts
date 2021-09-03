@@ -9,6 +9,7 @@ const LastfmContext = React.createContext({
   section: "albums",
   onSelectSongs: () => {},
   onSelectAlbums: () => {},
+  onSelectToday: () => {},
   onSelectArtist:()=>{},
   onSearch:()=>{},
   artist: 'Maluma',
@@ -31,9 +32,15 @@ export const LastfmContextProvider = (props) => {
     localStorage.setItem("section", "albums");
     setSection("albums");
   };
+  const selectTodayHandler = () => {
+    localStorage.setItem("section", "today");
+    setSection("today");
+  };
 
   const selectArtistHandler = (artist) => {
+    console.log(artist)
     localStorage.setItem("section", "artist");
+    localStorage.setItem("artist", artist);
     setSection("artist");
     setArtist(artist)
   };
@@ -49,6 +56,7 @@ export const LastfmContextProvider = (props) => {
         section: section,
         onSelectSongs: selectSongsHandler,
         onSelectAlbums: selectAlbumsHandler,
+        onSelectToday: selectTodayHandler,
         onSelectArtist: selectArtistHandler,
         onSearch:searchHandler,
         artist: artist,
